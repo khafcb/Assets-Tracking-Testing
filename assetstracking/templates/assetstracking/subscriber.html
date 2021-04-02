@@ -1,0 +1,101 @@
+{%  extends 'assetstracking/main.html' %}
+
+{% block content %}
+
+	<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Employee options:</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="">ADD Employee</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="">Delete Employee</a>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Subscriber Information</h5>
+			<hr>
+			<p>Name: {{subscriber.subscriber_name}} </p>
+			<p>Phone: {{subscriber.subscriber_id}} </p>
+		</div>
+	</div>
+</div>
+
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Total Borrowing</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{borrowing_count}}</h1>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Total Assets</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{tag_count}}</h1>
+		</div>
+	</div>	
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Total RFID Readers</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{rfid_count}}</h1>
+		</div>
+	</div>	
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Total Employee</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{employee_count}}</h1>
+		</div>
+	</div>
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form>
+		</div>
+	</div>
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Assets Borrowed</th>
+					<th>Start Date</th>
+					<th>End Date</th>
+					<th>Extend</th>
+					<th>Remove</th>
+				</tr>
+				{% for i in borrowings %}
+				<tr>
+					<td>{{i.borrowing_id}}</td>
+					<td>{{i.start_date}}</td>
+					<td>{{i.end_date}}</td>
+					<td><a class="btn btn-sm btn-info" href="">Extend</a></td>
+					<td><a class="btn btn-sm btn-danger" href="">Remove</a></td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
